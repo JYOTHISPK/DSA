@@ -17,15 +17,17 @@ Space Complexity: O(1)
 using namespace std;
 
 int square(int n){
-    int low=0,high=n-1,count=1;
+    int low=0,high=n-1,ans=1;
+    if(n<=2)    return -1;
     while(low<=high){
         int mid=(low+high)/2;
-        if(!mid)    break;
-        count++;
-        high=mid-1;
+        if(mid * mid <= n){
+            ans=mid;
+            low=mid+1;
+            }    
+        else   high=mid-1;
         }
-        count/=2;
-        return pow(2,count);
+        return  ans;
     }
 
 int  main(){
